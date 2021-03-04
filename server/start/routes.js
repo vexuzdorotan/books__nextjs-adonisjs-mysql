@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +14,22 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
+const Route = use("Route");
 
-Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
-})
+Route.get("/", () => {
+  return { greeting: "Hello world in JSON" };
+});
+
+// Books
+
+Route.get("books", "BookController.index");
+
+Route.post("books", "BookController.create");
+
+// Route.get("books/:id", "BookController.read");
+Route.get("books/:id", "BookController.show").middleware(["findBook"]);
+
+Route.patch("books/:id", "BookController.update").middleware(["findBook"]);
+
+Route.delete("books/:id", "BookController.delete");
+// Route.delete("books/:id", "BookController.delete").middleware(["findBook"]);
