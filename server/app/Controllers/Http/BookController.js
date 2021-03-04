@@ -23,10 +23,8 @@ class BookController {
     });
   }
 
-  async show({ request, response, params }) {
-    const { book } = request.post();
-
-    console.log(book);
+  async show({ request, response, params: { id } }) {
+    const book = await Book.find(id);
 
     response.status(200).json({
       message: "Here is the selected book.",

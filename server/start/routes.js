@@ -26,7 +26,7 @@ Route.get("books", "BookController.index");
 
 Route.post("books", "BookController.create");
 
-// Route.get("books/:id", "BookController.read");
+// Route.get("books/:id", "BookController.show");
 Route.get("books/:id", "BookController.show").middleware(["findBook"]);
 
 Route.patch("books/:id", "BookController.update").middleware(["findBook"]);
